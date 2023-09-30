@@ -1,5 +1,8 @@
 import 'package:calculator_module/widgets/calculatorButton.widget.dart';
 import 'package:flutter/widgets.dart';
+import 'package:unicons/unicons.dart';
+
+
 
 class CalculatorNumberBoardWidget extends StatefulWidget {
   const CalculatorNumberBoardWidget({
@@ -67,63 +70,88 @@ class _CalculatorNumberBoardWidgetState
 
   @override
   Widget build(BuildContext context) {
-    return GridView.count(
-      shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
-      childAspectRatio: 1.2,
-      crossAxisCount: 3,
-      mainAxisSpacing: 5,
-      crossAxisSpacing: 5,
-      children: [
-        CalculatorButton(
-          value: '9',
-          onPressed: () => onCalculatorChange('1'),
-        ),
-        CalculatorButton(
-          value: '8',
-          onPressed: () => onCalculatorChange('8'),
-        ),
-        CalculatorButton(
-          value: '7',
-          onPressed: () => onCalculatorChange('7'),
-        ),
-        CalculatorButton(
-          value: '6',
-          onPressed: () => onCalculatorChange('6'),
-        ),
-        CalculatorButton(
-          value: '5',
-          onPressed: () => onCalculatorChange('5'),
-        ),
-        CalculatorButton(
-          value: '4',
-          onPressed: () => onCalculatorChange('4'),
-        ),
-        CalculatorButton(
-          value: '3',
-          onPressed: () => onCalculatorChange('3'),
-        ),
-        CalculatorButton(
-          value: '2',
-          onPressed: () => onCalculatorChange('2'),
-        ),
-        CalculatorButton(
-          value: '1',
-          onPressed: () => onCalculatorChange('1'),
-        ),
-        CalculatorButton(
-          value: 'C',
-          onPressed: onClearTap,
-        ),
-        CalculatorButton(
-          value: '0',
-          onPressed: () => onCalculatorChange('0'),
-        ),
-        CalculatorButton(
-          value: '.',
-          onPressed: onDoubleEnableTap,
-        ),
-      ],
-    );
+    return LayoutBuilder(builder: (context, BoxConstraints constraints) {
+      final maxHeight = ((constraints.maxHeight - 15) / 4);
+      final maxWidth = (constraints.maxWidth - 30) / 3;
+
+      return Wrap(
+        runSpacing: 5,
+        spacing: 10,
+        children: [
+          CalculatorButton(
+            value: '9',
+            onPressed: () => onCalculatorChange('1'),
+            height: maxHeight,
+            width: maxWidth,
+          ),
+          CalculatorButton(
+            value: '8',
+            onPressed: () => onCalculatorChange('8'),
+            height: maxHeight,
+            width: maxWidth,
+          ),
+          CalculatorButton(
+            value: '7',
+            onPressed: () => onCalculatorChange('7'),
+            height: maxHeight,
+            width: maxWidth,
+          ),
+          CalculatorButton(
+            value: '6',
+            onPressed: () => onCalculatorChange('6'),
+            height: maxHeight,
+            width: maxWidth,
+          ),
+          CalculatorButton(
+            value: '5',
+            onPressed: () => onCalculatorChange('5'),
+            height: maxHeight,
+            width: maxWidth,
+          ),
+          CalculatorButton(
+            value: '4',
+            onPressed: () => onCalculatorChange('4'),
+            height: maxHeight,
+            width: maxWidth,
+          ),
+          CalculatorButton(
+            value: '3',
+            onPressed: () => onCalculatorChange('3'),
+            height: maxHeight,
+            width: maxWidth,
+          ),
+          CalculatorButton(
+            value: '2',
+            onPressed: () => onCalculatorChange('2'),
+            height: maxHeight,
+            width: maxWidth,
+          ),
+          CalculatorButton(
+            value: '1',
+            onPressed: () => onCalculatorChange('1'),
+            height: maxHeight,
+            width: maxWidth,
+          ),
+          CalculatorButton(
+            value: UniconsLine.cancel,
+            onPressed: onClearTap,
+            height: maxHeight,
+            width: maxWidth,
+          ),
+          CalculatorButton(
+            value: '0',
+            onPressed: () => onCalculatorChange('0'),
+            height: maxHeight,
+            width: maxWidth,
+          ),
+          CalculatorButton(
+            value: '.',
+            onPressed: onDoubleEnableTap,
+            height: maxHeight,
+            width: maxWidth,
+          ),
+        ],
+      );
+    });
   }
 }
