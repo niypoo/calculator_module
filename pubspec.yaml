@@ -13,6 +13,9 @@ dependencies:
   fly_ui:
     git:
       url: git@github.com:niypoo/fly_ui.git
+  vibration_helper:
+    git:
+      url: git@github.com:niypoo/vibration_helper.git
 
 dev_dependencies:
   flutter_test:
