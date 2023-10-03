@@ -1,8 +1,8 @@
-
 import 'package:flutter/widgets.dart';
 import 'package:fly_ui/views/widgets/containers/container.widget.dart';
 import 'package:fly_ui/views/widgets/inkWell.widget.dart';
 import 'package:get/get.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
 class CalculatorButton extends StatelessWidget {
   const CalculatorButton({
@@ -35,9 +35,12 @@ class CalculatorButton extends StatelessWidget {
           color: backgroundColor,
           child: Center(
             child: value is String
-                ? Text(
+                ? AutoSizeText(
                     value,
                     style: Get.textTheme.headlineLarge!.copyWith(color: color),
+                    maxLines: 1,
+                    minFontSize: 15,
+                    maxFontSize: Get.textTheme.headlineLarge!.fontSize!,
                   )
                 : Icon(
                     value,
