@@ -33,22 +33,23 @@ class CalculatorButton extends StatelessWidget {
         onTap: onPressed,
         child: FlyContainer(
           color: backgroundColor,
-          child: Center(
-            child: value is String
-                ? Expanded(
-                  child: AutoSizeText(
+          child: Expanded(
+            child: Center(
+              child: value is String
+                  ? AutoSizeText(
                       value,
-                      style: Get.textTheme.headlineLarge!.copyWith(color: color),
+                      style:
+                          Get.textTheme.headlineLarge!.copyWith(color: color),
                       maxLines: 1,
                       minFontSize: 15,
                       maxFontSize: Get.textTheme.headlineLarge!.fontSize!,
+                    )
+                  : Icon(
+                      value,
+                      color: color,
+                      size: 30,
                     ),
-                )
-                : Icon(
-                    value,
-                    color: color,
-                    size: 30,
-                  ),
+            ),
           ),
         ),
       ),
