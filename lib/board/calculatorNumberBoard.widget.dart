@@ -113,7 +113,7 @@ class _CalculatorNumberBoardWidgetState
               children: [
                 CalculatorButton(
                   value: '9',
-                  onPressed: () => onCalculatorChange('1'),
+                  onPressed: () => onCalculatorChange('9'),
                   height: maxHeight,
                   width: maxWidth,
                 ),
