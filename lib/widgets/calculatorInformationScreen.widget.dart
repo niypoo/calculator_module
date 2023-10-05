@@ -6,15 +6,15 @@ import 'package:auto_size_text/auto_size_text.dart';
 class CalculatorInformationScreenWidget extends StatelessWidget {
   const CalculatorInformationScreenWidget({
     super.key,
-    required this.title,
     required this.number,
-    required this.label,
+    this.title,
+    this.label,
     this.hint,
   });
 
   final String number;
-  final String label;
-  final Widget title;
+  final String? label;
+  final Widget? title;
   final Widget? hint;
 
   @override
@@ -33,12 +33,13 @@ class CalculatorInformationScreenWidget extends StatelessWidget {
                 TextSpan(
                   text: number,
                   children: [
-                    const TextSpan(text: ' '),
-                    TextSpan(
-                      text: label,
-                      style: Get.theme.textTheme.labelLarge
-                          ?.copyWith(fontWeight: FontWeight.w300),
-                    ),
+                    if (label != null) const TextSpan(text: ' '),
+                    if (label != null)
+                      TextSpan(
+                        text: label,
+                        style: Get.theme.textTheme.labelLarge
+                            ?.copyWith(fontWeight: FontWeight.w300),
+                      ),
                   ],
                 ),
                 style:
@@ -48,7 +49,7 @@ class CalculatorInformationScreenWidget extends StatelessWidget {
             ),
 
             // title
-            title,
+            if (title != null) title!,
 
             // hint
             if (hint != null) hint!,
