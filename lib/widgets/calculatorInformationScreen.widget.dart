@@ -4,8 +4,8 @@ import 'package:get/get.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 
 
-class CalculatorInformationScreen extends StatelessWidget {
-  const CalculatorInformationScreen({
+class CalculatorInformationScreenWidget extends StatelessWidget {
+  const CalculatorInformationScreenWidget({
     super.key,
     required this.title,
     required this.number,

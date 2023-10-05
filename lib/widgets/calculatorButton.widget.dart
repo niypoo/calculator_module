@@ -4,8 +4,8 @@ import 'package:fly_ui/views/widgets/inkWell.widget.dart';
 import 'package:get/get.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 
-class CalculatorButton extends StatelessWidget {
-  const CalculatorButton({
+class CalculatorButtonWidget extends StatelessWidget {
+  const CalculatorButtonWidget({
     super.key,
     required this.value,
     required this.onPressed,

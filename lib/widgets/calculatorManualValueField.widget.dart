@@ -9,8 +9,8 @@ import 'package:fly_ui/views/widgets/textField.widget.dart';
 import 'package:get/get.dart';
 import 'package:unicons/unicons.dart';
 
-class CalculatorManualValueField extends StatelessWidget {
-  const CalculatorManualValueField({
+class CalculatorManualValueFieldWidget extends StatelessWidget {
+  const CalculatorManualValueFieldWidget({
     Key? key,
     this.controller,
     this.label,

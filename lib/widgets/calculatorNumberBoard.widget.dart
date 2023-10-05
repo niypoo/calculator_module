@@ -86,7 +86,7 @@ class _CalculatorNumberBoardWidgetState
         children: [
           Column(
             children: [
-              CalculatorButton(
+              CalculatorButtonWidget(
                 value: UniconsLine.cancel,
                 onPressed: onClearTap,
                 height: maxHeight,
@@ -95,7 +95,7 @@ class _CalculatorNumberBoardWidgetState
                 color: Get.theme.secondaryHeaderColor,
               ),
               const SizedBox(height: 5),
-              CalculatorButton(
+              CalculatorButtonWidget(
                 backgroundColor: Get.theme.primaryColor,
                 color: Get.theme.secondaryHeaderColor,
                 value: UniconsLine.check,
@@ -111,61 +111,61 @@ class _CalculatorNumberBoardWidgetState
               runSpacing: 5,
               spacing: 10,
               children: [
-                CalculatorButton(
+                CalculatorButtonWidget(
                   value: '9',
                   onPressed: () => onCalculatorChange('9'),
                   height: maxHeight,
                   width: maxWidth,
                 ),
-                CalculatorButton(
+                CalculatorButtonWidget(
                   value: '8',
                   onPressed: () => onCalculatorChange('8'),
                   height: maxHeight,
                   width: maxWidth,
                 ),
-                CalculatorButton(
+                CalculatorButtonWidget(
                   value: '7',
                   onPressed: () => onCalculatorChange('7'),
                   height: maxHeight,
                   width: maxWidth,
                 ),
-                CalculatorButton(
+                CalculatorButtonWidget(
                   value: '6',
                   onPressed: () => onCalculatorChange('6'),
                   height: maxHeight,
                   width: maxWidth,
                 ),
-                CalculatorButton(
+                CalculatorButtonWidget(
                   value: '5',
                   onPressed: () => onCalculatorChange('5'),
                   height: maxHeight,
                   width: maxWidth,
                 ),
-                CalculatorButton(
+                CalculatorButtonWidget(
                   value: '4',
                   onPressed: () => onCalculatorChange('4'),
                   height: maxHeight,
                   width: maxWidth,
                 ),
-                CalculatorButton(
+                CalculatorButtonWidget(
                   value: '3',
                   onPressed: () => onCalculatorChange('3'),
                   height: maxHeight,
                   width: maxWidth,
                 ),
-                CalculatorButton(
+                CalculatorButtonWidget(
                   value: '2',
                   onPressed: () => onCalculatorChange('2'),
                   height: maxHeight,
                   width: maxWidth,
                 ),
-                CalculatorButton(
+                CalculatorButtonWidget(
                   value: '1',
                   onPressed: () => onCalculatorChange('1'),
                   height: maxHeight,
                   width: maxWidth,
                 ),
-                CalculatorButton(
+                CalculatorButtonWidget(
                   backgroundColor:
                       enableDouble ? Get.theme.colorScheme.secondary : null,
                   color: enableDouble ? Get.theme.secondaryHeaderColor : null,
@@ -174,7 +174,7 @@ class _CalculatorNumberBoardWidgetState
                   height: maxHeight,
                   width: maxWidth,
                 ),
-                CalculatorButton(
+                CalculatorButtonWidget(
                   value: '0',
                   onPressed: () => onCalculatorChange('0'),
                   height: maxHeight,
