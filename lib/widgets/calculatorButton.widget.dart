@@ -27,30 +27,31 @@ class CalculatorButtonWidget extends StatelessWidget {
     return SizedBox(
       width: width,
       height: height,
-      child: FlyInkWell(
-        onTap: onPressed,
-        child: FlyContainer(
-          color: backgroundColor,
-          child: Expanded(
-            child: Center(
-              child: value is String
-                  ? AutoSizeText(
-                      value,
-                      style:
-                          Get.textTheme.headlineLarge!.copyWith(color: color),
-                      maxLines: 1,
-                      minFontSize: 15,
-                      maxFontSize: Get.textTheme.headlineLarge!.fontSize!,
-                    )
-                  : Icon(
-                      value,
-                      color: color,
-                      size: 30,
-                    ),
-            ),
-          ),
-        ),
-      ),
+      // child:
+      //  FlyInkWell(
+      //   onTap: onPressed,
+      //   child: FlyContainer(
+      //     color: backgroundColor,
+      //     child: Expanded(
+      //       child: Center(
+      //         child: value is String
+      //             ? AutoSizeText(
+      //                 value,
+      //                 style:
+      //                     Get.textTheme.headlineLarge!.copyWith(color: color),
+      //                 maxLines: 1,
+      //                 minFontSize: 15,
+      //                 maxFontSize: Get.textTheme.headlineLarge!.fontSize!,
+      //               )
+      //             : Icon(
+      //                 value,
+      //                 color: color,
+      //                 size: 30,
+      //               ),
+      //       ),
+      //     ),
+      //   ),
+      // ),
     );
   }
 }
