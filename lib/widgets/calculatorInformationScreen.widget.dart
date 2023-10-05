@@ -3,7 +3,6 @@ import 'package:fly_ui/views/widgets/containers/container.widget.dart';
 import 'package:get/get.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 
-
 class CalculatorInformationScreenWidget extends StatelessWidget {
   const CalculatorInformationScreenWidget({
     super.key,
@@ -30,23 +29,21 @@ class CalculatorInformationScreenWidget extends StatelessWidget {
           children: [
             // Number
             Flexible(
-              child: Obx(
-                () => AutoSizeText.rich(
-                  TextSpan(
-                    text: number,
-                    children: [
-                      const TextSpan(text: ' '),
-                      TextSpan(
-                        text:label,
-                        style: Get.theme.textTheme.labelLarge
-                            ?.copyWith(fontWeight: FontWeight.w300),
-                      ),
-                    ],
-                  ),
-                  style: Get.theme.textTheme.headlineLarge!
-                      .copyWith(fontSize: 60),
-                  maxLines: 1,
+              child: AutoSizeText.rich(
+                TextSpan(
+                  text: number,
+                  children: [
+                    const TextSpan(text: ' '),
+                    TextSpan(
+                      text: label,
+                      style: Get.theme.textTheme.labelLarge
+                          ?.copyWith(fontWeight: FontWeight.w300),
+                    ),
+                  ],
                 ),
+                style:
+                    Get.theme.textTheme.headlineLarge!.copyWith(fontSize: 60),
+                maxLines: 1,
               ),
             ),
 
@@ -54,7 +51,7 @@ class CalculatorInformationScreenWidget extends StatelessWidget {
             title,
 
             // hint
-            if(hint != null) hint!,
+            if (hint != null) hint!,
           ],
         ),
       ),
