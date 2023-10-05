@@ -31,20 +31,22 @@ class CalculatorButtonWidget extends StatelessWidget {
         height: height,
         child: FlyContainer(
           color: backgroundColor,
-          child: value is String
-              ? AutoSizeText(
-                  value,
-                  style: Get.textTheme.headlineLarge!.copyWith(color: color),
-                  maxLines: 1,
-                  minFontSize: 15,
-                  maxFontSize: Get.textTheme.headlineLarge!.fontSize!,
-                  textAlign: TextAlign.center,
-                )
-              : Icon(
-                  value,
-                  color: color,
-                  size: 30,
-                ),
+          child: Center(
+            child: value is String
+                ? AutoSizeText(
+                    value,
+                    style: Get.textTheme.headlineLarge!.copyWith(color: color),
+                    maxLines: 1,
+                    minFontSize: 15,
+                    maxFontSize: Get.textTheme.headlineLarge!.fontSize!,
+                    textAlign: TextAlign.center,
+                  )
+                : Icon(
+                    value,
+                    color: color,
+                    size: 30,
+                  ),
+          ),
         ),
       ),
     );
