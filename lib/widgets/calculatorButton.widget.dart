@@ -38,6 +38,7 @@ class CalculatorButtonWidget extends StatelessWidget {
                   maxLines: 1,
                   minFontSize: 15,
                   maxFontSize: Get.textTheme.headlineLarge!.fontSize!,
+                  textAlign: TextAlign.center,
                 )
               : Icon(
                   value,
