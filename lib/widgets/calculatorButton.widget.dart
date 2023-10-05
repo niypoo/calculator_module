@@ -24,8 +24,6 @@ class CalculatorButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('$value => $width');
-
     return SizedBox(
       width: width,
       height: height,
