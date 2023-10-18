@@ -43,7 +43,7 @@ class CalculatorInformationScreenWidget extends StatelessWidget {
                   ],
                 ),
                 style:
-                    Get.theme.textTheme.headlineLarge!.copyWith(fontSize: 60),
+                    Get.theme.textTheme.headlineLarge!.copyWith(fontSize: 70),
                 maxLines: 1,
               ),
             ),
