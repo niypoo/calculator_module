@@ -1,4 +1,5 @@
 import 'package:calculator_module/widgets/calculatorButton.widget.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:unicons/unicons.dart';
@@ -91,7 +92,7 @@ class _CalculatorNumberBoardWidgetState
                 onPressed: onClearTap,
                 height: maxHeight,
                 width: maxWidth,
-                backgroundColor: Get.theme.colorScheme.secondary,
+                backgroundColor: Colors.red[400],
                 color: Get.theme.secondaryHeaderColor,
               ),
               const SizedBox(height: 5),
