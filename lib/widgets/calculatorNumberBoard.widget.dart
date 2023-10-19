@@ -88,7 +88,7 @@ class _CalculatorNumberBoardWidgetState
           Column(
             children: [
               CalculatorButtonWidget(
-                value: UniconsLine.cancel,
+                value: UniconsLine.times,
                 onPressed: onClearTap,
                 height: maxHeight,
                 width: maxWidth,
