@@ -2,8 +2,8 @@ import 'package:flutter/services.dart';
 import 'dart:math' as math;
 import 'package:app_configuration_service/appInfo.config.dart';
 import 'package:flutter/material.dart';
-import 'package:fly_ui/views/widgets/buttons/circalButton.widget.dart';
 import 'package:fly_ui/views/widgets/buttons/elevatedButton.widget.dart';
+import 'package:fly_ui/views/widgets/buttons/iconButton.widget.dart';
 import 'package:fly_ui/views/widgets/buttons/textButton.widget.dart';
 import 'package:fly_ui/views/widgets/textField.widget.dart';
 import 'package:get/get.dart';
@@ -39,9 +39,9 @@ class CalculatorManualValueFieldWidget extends StatelessWidget {
               onFieldSubmitted: (_) => onConfirm!(),
               suffix: Padding(
                 padding: EdgeInsets.all(AppConfigService.to.space!.s),
-                child: FlyCircleButton(
+                child: FlyIconButton(
                   padding: const EdgeInsets.all(0),
-                  color: Get.theme.scaffoldBackgroundColor,
+                  bgColor: Get.theme.scaffoldBackgroundColor,
                   icon: UniconsLine.times,
                   colorIcon: Get.theme.iconTheme.color,
                   onPressed: onReset,
