@@ -65,7 +65,7 @@ class _CalculatorNumberBoardWidgetState
 
   void onDoubleEnableTap() {
     setState(() {
-        enableDouble = !enableDouble;
+      enableDouble = !enableDouble;
     });
     VibrationHelper.haptic();
   }
@@ -85,28 +85,6 @@ class _CalculatorNumberBoardWidgetState
 
       return Row(
         children: [
-          Column(
-            children: [
-              CalculatorButtonWidget(
-                value: UniconsLine.times,
-                onPressed: onClearTap,
-                height: maxHeight,
-                width: maxWidth,
-                backgroundColor: Colors.red[400],
-                color: Get.theme.secondaryHeaderColor,
-              ),
-              const SizedBox(height: 5),
-              CalculatorButtonWidget(
-                backgroundColor: Get.theme.primaryColor,
-                color: Get.theme.secondaryHeaderColor,
-                value: UniconsLine.check,
-                onPressed: widget.onSave,
-                height: (maxHeight+3) * 3,
-                width: maxWidth,
-              ),
-            ],
-          ),
-          const SizedBox(width: 10),
           Expanded(
             child: Wrap(
               runSpacing: 5,
@@ -179,11 +157,33 @@ class _CalculatorNumberBoardWidgetState
                   value: '0',
                   onPressed: () => onCalculatorChange('0'),
                   height: maxHeight,
-                  width: (maxWidth+5) * 2,
+                  width: (maxWidth + 5) * 2,
                 ),
               ],
             ),
-          )
+          ),
+          const SizedBox(width: 10),
+          Column(
+            children: [
+              CalculatorButtonWidget(
+                value: UniconsLine.times,
+                onPressed: onClearTap,
+                height: maxHeight,
+                width: maxWidth,
+                backgroundColor: Colors.red[400],
+                color: Get.theme.secondaryHeaderColor,
+              ),
+              const SizedBox(height: 5),
+              CalculatorButtonWidget(
+                backgroundColor: Get.theme.primaryColor,
+                color: Get.theme.secondaryHeaderColor,
+                value: UniconsLine.check,
+                onPressed: widget.onSave,
+                height: (maxHeight + 3) * 3,
+                width: maxWidth,
+              ),
+            ],
+          ),
         ],
       );
     });
