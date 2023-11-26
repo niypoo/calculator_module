@@ -52,6 +52,13 @@ class CalculatorInformationScreenWidget extends StatelessWidget {
               ),
             ),
 
+            Divider(
+              color: Get.iconColor!.withOpacity(0.2),
+              height: 10.sp,
+              indent: 15.sp,
+              endIndent: 15.sp,
+            ),
+            
             // title
             if (title != null) title!,
 
