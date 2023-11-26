@@ -37,16 +37,12 @@ class CalculatorManualValueFieldWidget extends StatelessWidget {
                   const TextInputType.numberWithOptions(decimal: true),
               inputFormatters: [DecimalTextInputFormatter(decimalRange: 2)],
               onFieldSubmitted: (_) => onConfirm!(),
-              suffix: Padding(
-                padding: EdgeInsets.all(AppConfigService.to.space!.s),
-                child: FlyIconButton(
-                  padding: const EdgeInsets.all(0),
-                  bgColor: Get.theme.scaffoldBackgroundColor,
+              suffix: [
+                FlyIconButton.scaffold(
                   icon: UniconsLine.times,
-                  colorIcon: Get.theme.iconTheme.color,
                   onPressed: onReset,
                 ),
-              ),
+              ],
             ),
           ),
           FlyElevatedButton.primary(
@@ -63,8 +59,6 @@ class CalculatorManualValueFieldWidget extends StatelessWidget {
     );
   }
 }
-
-
 
 class DecimalTextInputFormatter extends TextInputFormatter {
   DecimalTextInputFormatter({this.decimalRange})
