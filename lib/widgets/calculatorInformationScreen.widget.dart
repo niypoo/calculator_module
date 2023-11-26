@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fly_ui/extensions/responsive.extension.dart';
 import 'package:fly_ui/views/widgets/containers/container.widget.dart';
 import 'package:get/get.dart';
 import 'package:auto_size_text/auto_size_text.dart';
@@ -37,13 +38,16 @@ class CalculatorInformationScreenWidget extends StatelessWidget {
                     if (label != null)
                       TextSpan(
                         text: label,
-                        style: Get.theme.textTheme.labelLarge
-                            ?.copyWith(fontWeight: FontWeight.w300),
+                        style: Get.theme.textTheme.labelLarge?.copyWith(
+                          fontWeight: FontWeight.w300,
+                          fontSize: 12.sp,
+                        ),
                       ),
                   ],
                 ),
-                style:
-                    Get.theme.textTheme.headlineLarge!.copyWith(fontSize: 70),
+                style: Get.theme.textTheme.headlineLarge!.copyWith(
+                  fontSize: 50.sp,
+                ),
                 maxLines: 1,
               ),
             ),

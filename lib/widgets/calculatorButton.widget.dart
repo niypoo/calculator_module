@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:fly_ui/extensions/responsive.extension.dart';
 import 'package:fly_ui/views/widgets/containers/container.widget.dart';
 import 'package:fly_ui/views/widgets/inkWell.widget.dart';
 import 'package:get/get.dart';
@@ -37,14 +38,14 @@ class CalculatorButtonWidget extends StatelessWidget {
                     value,
                     style: Get.textTheme.headlineLarge!.copyWith(color: color),
                     maxLines: 1,
-                    minFontSize: 15,
-                    maxFontSize: Get.textTheme.headlineLarge!.fontSize!,
+                    minFontSize: 15.sp,
+                    maxFontSize: 30.sp,
                     textAlign: TextAlign.center,
                   )
                 : Icon(
                     value,
                     color: color,
-                    size: 30,
+                    size: 20.sp,
                   ),
           ),
         ),
