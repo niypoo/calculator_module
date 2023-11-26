@@ -36,10 +36,13 @@ class CalculatorButtonWidget extends StatelessWidget {
             child: value is String
                 ? AutoSizeText(
                     value,
-                    style: Get.textTheme.headlineLarge!.copyWith(color: color),
+                    style: Get.textTheme.headlineLarge!.copyWith(
+                      color: color,
+                      fontSize: 20.sp,
+                    ),
                     maxLines: 1,
-                    minFontSize: 15.sp,
-                    maxFontSize: 30.sp,
+                    minFontSize: 14.sp,
+                    maxFontSize: 20.sp,
                     textAlign: TextAlign.center,
                   )
                 : Icon(
