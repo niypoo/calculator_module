@@ -27,36 +27,39 @@ class CalculatorNumberBoardWidget extends StatefulWidget {
 class _CalculatorNumberBoardWidgetState
     extends State<CalculatorNumberBoardWidget> {
   bool enableDouble = false;
-  double existValue = 0.0;
 
   @override
   void initState() {
-    existValue = widget.initValue;
     super.initState();
   }
 
-  void onCalculatorChange(int value) {
-    // payload
-    double payload = 0;
-    int length = existValue.toInt().toString().length;
+  void onCalculatorChange(String value) {
+    // define old value
+    String oldValue = '';
 
     // if double is enabled
     if (enableDouble) {
-      // add new number to full number
-      payload = 0.1 * value;
+      // get decimal number
+      double x = widget.initValue.toDouble() - widget.initValue.toInt();
+
+      // if decimal less then 0
+      oldValue = x <= 0
+          // get only init numbers and add dot
+          ? '${widget.initValue.toInt()}.'
+          // get the full number
+          : widget.initValue.toDouble().toString();
     } else {
       // add new number to full number
-      payload = ((length * 100) * value).toDouble();
+      oldValue = widget.initValue.toInt().toString();
     }
 
     // define new value
     String newValue =
-        (payload + existValue).toStringAsFixed(widget.fractionDigits);
+        double.parse('$oldValue$value').toStringAsFixed(widget.fractionDigits);
 
     // callback
     widget.onChange(double.parse(newValue));
 
-    // Vibration
     VibrationHelper.haptic();
   }
 
@@ -69,23 +72,8 @@ class _CalculatorNumberBoardWidgetState
 
   void onClearTap() {
     enableDouble = false;
-    widget.onChange(0.0);
-    VibrationHelper.haptic();
-  }
-
-  void onRemoveTap() {
-    double payload = 0;
-    int length = existValue.toInt().toString().length;
-
-    // if double is enabled
-    if (enableDouble) {
-      // add new number to full number
-      payload = existValue - (0.100)  ;
-    } else {
-      // add new number to full number
-      payload = (existValue - (length * 1)  ).toDouble();
-    }
-    widget.onChange(payload);
+    String newValue = '0.0';
+    widget.onChange(double.parse(newValue));
     VibrationHelper.haptic();
   }
 
@@ -104,55 +92,55 @@ class _CalculatorNumberBoardWidgetState
               children: [
                 CalculatorButtonWidget(
                   value: '9',
-                  onPressed: () => onCalculatorChange(9),
+                  onPressed: () => onCalculatorChange('9'),
                   height: maxHeight,
                   width: maxWidth,
                 ),
                 CalculatorButtonWidget(
                   value: '8',
-                  onPressed: () => onCalculatorChange(8),
+                  onPressed: () => onCalculatorChange('8'),
                   height: maxHeight,
                   width: maxWidth,
                 ),
                 CalculatorButtonWidget(
                   value: '7',
-                  onPressed: () => onCalculatorChange(7),
+                  onPressed: () => onCalculatorChange('7'),
                   height: maxHeight,
                   width: maxWidth,
                 ),
                 CalculatorButtonWidget(
                   value: '6',
-                  onPressed: () => onCalculatorChange(6),
+                  onPressed: () => onCalculatorChange('6'),
                   height: maxHeight,
                   width: maxWidth,
                 ),
                 CalculatorButtonWidget(
                   value: '5',
-                  onPressed: () => onCalculatorChange(5),
+                  onPressed: () => onCalculatorChange('5'),
                   height: maxHeight,
                   width: maxWidth,
                 ),
                 CalculatorButtonWidget(
                   value: '4',
-                  onPressed: () => onCalculatorChange(4),
+                  onPressed: () => onCalculatorChange('4'),
                   height: maxHeight,
                   width: maxWidth,
                 ),
                 CalculatorButtonWidget(
                   value: '3',
-                  onPressed: () => onCalculatorChange(3),
+                  onPressed: () => onCalculatorChange('3'),
                   height: maxHeight,
                   width: maxWidth,
                 ),
                 CalculatorButtonWidget(
                   value: '2',
-                  onPressed: () => onCalculatorChange(2),
+                  onPressed: () => onCalculatorChange('2'),
                   height: maxHeight,
                   width: maxWidth,
                 ),
                 CalculatorButtonWidget(
                   value: '1',
-                  onPressed: () => onCalculatorChange(1),
+                  onPressed: () => onCalculatorChange('1'),
                   height: maxHeight,
                   width: maxWidth,
                 ),
@@ -167,7 +155,7 @@ class _CalculatorNumberBoardWidgetState
                 ),
                 CalculatorButtonWidget(
                   value: '0',
-                  onPressed: () => onCalculatorChange(0),
+                  onPressed: () => onCalculatorChange('0'),
                   height: maxHeight,
                   width: (maxWidth + 5) * 2,
                 ),
@@ -183,14 +171,6 @@ class _CalculatorNumberBoardWidgetState
                 height: maxHeight,
                 width: maxWidth,
                 backgroundColor: Colors.red[400],
-                color: Get.theme.secondaryHeaderColor,
-              ),
-              CalculatorButtonWidget(
-                value: UniconsLine.backspace,
-                onPressed: onRemoveTap,
-                height: maxHeight,
-                width: maxWidth,
-                backgroundColor: Colors.orange[400],
                 color: Get.theme.secondaryHeaderColor,
               ),
               const SizedBox(height: 5),
