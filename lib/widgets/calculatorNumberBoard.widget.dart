@@ -14,7 +14,7 @@ class CalculatorNumberBoardWidget extends StatefulWidget {
     this.fractionDigits = 2,
   });
 
-  final num initValue;
+  final double initValue;
   final int fractionDigits;
   final Function(num value) onChange;
   final Function onSave;
@@ -26,12 +26,12 @@ class CalculatorNumberBoardWidget extends StatefulWidget {
 
 class _CalculatorNumberBoardWidgetState
     extends State<CalculatorNumberBoardWidget> {
-  num current = 0;
+  String current = '0';
   bool enableDouble = false;
 
   @override
   void initState() {
-    current = parsNumber(widget.initValue);
+    current = parsNumber(widget.initValue.toDouble()).toString();
     super.initState();
   }
 
@@ -41,19 +41,27 @@ class _CalculatorNumberBoardWidgetState
   void onCalculatorChange(String value) {
     // if double is enabled
     if (enableDouble) {
-      if (current.toString().contains('.')) {
-        current = parsNumber(num.parse('$current$value'));
-      } else {
-        current = parsNumber(num.parse('$current.$value'));
-      }
+      // get decimal number
+      double x = widget.initValue.toDouble() - widget.initValue.toInt();
+
+      // if decimal less then 0
+      current = x <= 0
+          // get only init numbers and add dot
+          ? '${widget.initValue.toInt()}.'
+          // get the full number
+          : widget.initValue.toDouble().toString();
     } else {
-      current = parsNumber(num.parse('$current$value'));
+      // add new number to full number
+      current = widget.initValue.toInt().toString();
     }
 
-    // callback
-    widget.onChange(current);
+    // define new value
+    String newValue =
+        double.parse('$current$value').toStringAsFixed(widget.fractionDigits);
 
-    // vibration
+    // callback
+    widget.onChange(num.parse(newValue));
+
     VibrationHelper.haptic();
   }
 
@@ -66,8 +74,8 @@ class _CalculatorNumberBoardWidgetState
 
   void onClearTap() {
     enableDouble = false;
-    current = parsNumber(0);
-    widget.onChange(current);
+    String newValue = '0.0';
+    widget.onChange(double.parse(newValue));
     VibrationHelper.haptic();
   }
 
