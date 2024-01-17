@@ -14,7 +14,7 @@ class CalculatorNumberBoardWidget extends StatefulWidget {
     this.fractionDigits = 2,
   });
 
-  final double initValue;
+  final num initValue;
   final int fractionDigits;
   final Function(num value) onChange;
   final Function onSave;
