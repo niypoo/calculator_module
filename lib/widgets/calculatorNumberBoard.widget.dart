@@ -46,7 +46,9 @@ class _CalculatorNumberBoardWidgetState
       } else {
         current = parsNumber(num.parse('$current.$value'));
       }
-    } else {}
+    } else {
+      current = parsNumber(num.parse('$current$value'));
+    }
 
     // callback
     widget.onChange(current);
@@ -64,7 +66,7 @@ class _CalculatorNumberBoardWidgetState
 
   void onClearTap() {
     enableDouble = false;
-    current = parsNumber(0.0);
+    current = parsNumber(0);
     widget.onChange(current);
     VibrationHelper.haptic();
   }
