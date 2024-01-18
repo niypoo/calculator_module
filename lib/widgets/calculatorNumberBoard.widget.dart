@@ -31,36 +31,17 @@ class _CalculatorNumberBoardWidgetState
 
   @override
   void initState() {
-    current = parsNumber(widget.initValue.toDouble()).toString();
+    current = widget.initValue.toStringAsFixed(widget.fractionDigits);
     super.initState();
   }
 
-  num parsNumber(num value) =>
-      num.parse(value.toStringAsFixed(widget.fractionDigits));
-
   void onCalculatorChange(String value) {
-    // if double is enabled
-    if (enableDouble) {
-      // get decimal number
-      double x = widget.initValue.toDouble() - widget.initValue.toInt();
-
-      // if decimal less then 0
-      current = x <= 0
-          // get only init numbers and add dot
-          ? '${widget.initValue.toInt()}.'
-          // get the full number
-          : widget.initValue.toDouble().toString();
-    } else {
-      // add new number to full number
-      current = widget.initValue.toInt().toString();
-    }
-
-    // define new value
-    String newValue =
-        double.parse('$current$value').toStringAsFixed(widget.fractionDigits);
+    // add new number to full number
+    current = '$current$value';
 
     // callback
-    widget.onChange(num.parse(newValue));
+    widget.onChange(
+        num.parse(num.parse(current).toStringAsFixed(widget.fractionDigits)));
 
     VibrationHelper.haptic();
   }
@@ -68,6 +49,11 @@ class _CalculatorNumberBoardWidgetState
   void onDoubleEnableTap() {
     setState(() {
       enableDouble = !enableDouble;
+      if (enableDouble) {
+        if (!current.contains('.')) current = '$current.';
+      } else {
+        current = current.replaceFirst('.', '');
+      }
     });
     VibrationHelper.haptic();
   }
