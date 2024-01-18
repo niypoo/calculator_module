@@ -163,27 +163,21 @@ class _CalculatorNumberBoardWidgetState
           Column(
             children: [
               CalculatorButtonWidget(
-                value: UniconsLine.times,
+                value: UniconsLine.cancel,
+                onPressed: onRemoveTap,
+                height: maxHeight,
+                width: maxWidth,
+              ),
+              SizedBox(height: 5.sp),
+              CalculatorButtonWidget(
+                value: 'C',
                 onPressed: onClearTap,
                 height: maxHeight,
                 width: maxWidth,
                 backgroundColor: Colors.red[400],
                 color: Get.theme.secondaryHeaderColor,
               ),
-              SizedBox(
-                height: 5.sp,
-              ),
-              CalculatorButtonWidget(
-                value: UniconsLine.cancel,
-                onPressed: onRemoveTap,
-                height: maxHeight,
-                width: maxWidth,
-                backgroundColor: Colors.redAccent[400],
-                color: Get.theme.secondaryHeaderColor,
-              ),
-              SizedBox(
-                height: 5.sp,
-              ),
+              SizedBox(height: 5.sp),
               CalculatorButtonWidget(
                 backgroundColor: Get.theme.primaryColor,
                 color: Get.theme.secondaryHeaderColor,
