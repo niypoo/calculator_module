@@ -31,7 +31,7 @@ class _CalculatorNumberBoardWidgetState
 
   @override
   void initState() {
-    current = widget.initValue.toStringAsFixed(widget.fractionDigits);
+    current = widget.initValue.toString();
     super.initState();
   }
 
@@ -41,9 +41,8 @@ class _CalculatorNumberBoardWidgetState
     current = '$current$value';
 
     // callback
-    widget.onChange(
-        num.parse(num.parse(current).toStringAsFixed(widget.fractionDigits)));
-print('[[[[fractionDigits ${ num.parse(num.parse(current).toStringAsFixed(widget.fractionDigits))}]]]]');
+    widget.onChange(num.parse(current));
+    print('[[[[fractionDigits ${ num.parse(current)}]]]]');
     VibrationHelper.haptic();
   }
 
