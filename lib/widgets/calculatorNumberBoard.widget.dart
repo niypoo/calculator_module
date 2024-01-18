@@ -1,6 +1,7 @@
 import 'package:calculator_module/widgets/calculatorButton.widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:fly_ui/extensions/responsive.extension.dart';
 import 'package:get/get.dart';
 import 'package:unicons/unicons.dart';
 import 'package:vibration_helper/vibration.helper.dart';
@@ -42,7 +43,7 @@ class _CalculatorNumberBoardWidgetState
 
     // callback
     widget.onChange(num.parse(current));
-    print('[[[[fractionDigits ${ num.parse(current)}]]]]');
+    print('[[[[fractionDigits ${num.parse(current)}]]]]');
     VibrationHelper.haptic();
   }
 
@@ -56,6 +57,13 @@ class _CalculatorNumberBoardWidgetState
       }
     });
     VibrationHelper.haptic();
+  }
+
+  void onRemoveTap() {
+    if (current.isEmpty) return;
+    current.substring(current.length - 1);
+    // callback
+    widget.onChange(num.parse(current));
   }
 
   void onClearTap() {
@@ -75,8 +83,8 @@ class _CalculatorNumberBoardWidgetState
         children: [
           Expanded(
             child: Wrap(
-              runSpacing: 5,
-              spacing: 10,
+              runSpacing: 5.sp,
+              spacing: 5.sp,
               children: [
                 CalculatorButtonWidget(
                   value: '9',
@@ -150,8 +158,10 @@ class _CalculatorNumberBoardWidgetState
               ],
             ),
           ),
-          const SizedBox(width: 10),
-          Column(
+          SizedBox(width: 5.sp),
+          Wrap(
+            runSpacing: 5.sp,
+            spacing: 5.sp,
             children: [
               CalculatorButtonWidget(
                 value: UniconsLine.times,
@@ -161,13 +171,20 @@ class _CalculatorNumberBoardWidgetState
                 backgroundColor: Colors.red[400],
                 color: Get.theme.secondaryHeaderColor,
               ),
-              const SizedBox(height: 5),
+              CalculatorButtonWidget(
+                value: UniconsLine.cancel,
+                onPressed: onRemoveTap,
+                height: maxHeight,
+                width: maxWidth,
+                backgroundColor: Colors.redAccent[400],
+                color: Get.theme.secondaryHeaderColor,
+              ),
               CalculatorButtonWidget(
                 backgroundColor: Get.theme.primaryColor,
                 color: Get.theme.secondaryHeaderColor,
                 value: UniconsLine.check,
                 onPressed: widget.onSave,
-                height: (maxHeight + 3) * 3,
+                height: maxHeight,
                 width: maxWidth,
               ),
             ],
