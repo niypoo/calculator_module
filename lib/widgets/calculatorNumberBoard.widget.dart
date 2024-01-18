@@ -66,7 +66,7 @@ class _CalculatorNumberBoardWidgetState
     current = current.substring(0, current.length - 1);
     print('[[[[substring $current]]]]');
     // callback
-    widget.onChange(num.parse(current));
+    widget.onChange(num.parse(current.isEmpty ? '0' : current));
   }
 
   void onClearTap() {
@@ -185,7 +185,7 @@ class _CalculatorNumberBoardWidgetState
                 color: Get.theme.secondaryHeaderColor,
                 value: UniconsLine.check,
                 onPressed: widget.onSave,
-                height: (maxHeight * 2) + 5.sp,
+                height: (maxHeight * 2) + 5,
                 width: maxWidth,
               ),
             ],
