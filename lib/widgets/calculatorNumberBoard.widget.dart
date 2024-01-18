@@ -61,9 +61,15 @@ class _CalculatorNumberBoardWidgetState
 
   void onRemoveTap() {
     print('[[[[current $current]]]]');
-    if (current.isEmpty) return;
+    if (current.isEmpty) return onClearTap();
 
     current = current.substring(0, current.length - 1);
+
+    // in case last dicmal has remove @ remove . also
+    if (current.substring(current.length - 1) == '.') {
+      current = current.substring(0, current.length - 1);
+    }
+
     print('[[[[substring $current]]]]');
     // callback
     widget.onChange(num.parse(current.isEmpty ? '0' : current));
@@ -73,7 +79,6 @@ class _CalculatorNumberBoardWidgetState
     enableDouble = false;
     current = '0';
     widget.onChange(num.parse(current));
-    VibrationHelper.haptic();
   }
 
   @override
@@ -185,7 +190,7 @@ class _CalculatorNumberBoardWidgetState
                 color: Get.theme.secondaryHeaderColor,
                 value: UniconsLine.check,
                 onPressed: widget.onSave,
-                height: (maxHeight * 2) + 5,
+                height: (maxHeight * 2),
                 width: maxWidth,
               ),
             ],
