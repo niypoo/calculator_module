@@ -61,7 +61,8 @@ class _CalculatorNumberBoardWidgetState
 
   void onRemoveTap() {
     if (current.isEmpty) return;
-    current = current.substring(current.length - 1);
+
+    current = current.substring(0, current.length - 1);
     // callback
     widget.onChange(num.parse(current));
   }
@@ -189,7 +190,7 @@ class _CalculatorNumberBoardWidgetState
                 value: UniconsLine.check,
                 onPressed: widget.onSave,
                 height: maxHeight,
-                width: maxWidth,
+                width: (maxWidth * 2) + 5.sp,
               ),
             ],
           ),
