@@ -61,7 +61,7 @@ class _CalculatorNumberBoardWidgetState
 
   void onRemoveTap() {
     if (current.isEmpty) return;
-    current.substring(current.length - 1);
+    current = current.substring(current.length - 1);
     // callback
     widget.onChange(num.parse(current));
   }
@@ -159,9 +159,7 @@ class _CalculatorNumberBoardWidgetState
             ),
           ),
           SizedBox(width: 5.sp),
-          Wrap(
-            runSpacing: 5.sp,
-            spacing: 5.sp,
+          Column(
             children: [
               CalculatorButtonWidget(
                 value: UniconsLine.times,
@@ -171,6 +169,9 @@ class _CalculatorNumberBoardWidgetState
                 backgroundColor: Colors.red[400],
                 color: Get.theme.secondaryHeaderColor,
               ),
+              SizedBox(
+                height: 5.sp,
+              ),
               CalculatorButtonWidget(
                 value: UniconsLine.cancel,
                 onPressed: onRemoveTap,
@@ -178,6 +179,9 @@ class _CalculatorNumberBoardWidgetState
                 width: maxWidth,
                 backgroundColor: Colors.redAccent[400],
                 color: Get.theme.secondaryHeaderColor,
+              ),
+              SizedBox(
+                height: 5.sp,
               ),
               CalculatorButtonWidget(
                 backgroundColor: Get.theme.primaryColor,
