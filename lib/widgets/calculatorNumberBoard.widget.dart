@@ -12,7 +12,7 @@ class CalculatorNumberBoardWidget extends StatefulWidget {
     required this.onChange,
     required this.onSave,
     this.fractionDigits = 2,
-    this.maxLength = 11,
+    this.maxLength = 9,
   });
 
   final num initValue;
