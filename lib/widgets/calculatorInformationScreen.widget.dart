@@ -55,10 +55,10 @@ class CalculatorInformationScreenWidget extends StatelessWidget {
             // divider
             if (title != null || hint != null)
               Divider(
-                color: Get.theme.scaffoldBackgroundColor,
+                color: Get.theme.iconTheme.color!.withOpacity(0.2),
                 height: 10.sp,
-                indent: 15.sp,
-                endIndent: 15.sp,
+                indent: 25.sp,
+                endIndent: 25.sp,
               ),
 
             // title

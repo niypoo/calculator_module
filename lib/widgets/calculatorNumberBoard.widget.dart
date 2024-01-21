@@ -46,10 +46,11 @@ class _CalculatorNumberBoardWidgetState
 
     // add new number to full number
     current = '$current$value';
-
+    print('[[[current $current]]]');
     // fraction apply if decimale is enabled
     if (current.contains('.')) {
       current = num.parse(current).toStringAsFixed(widget.fractionDigits);
+      print('[[[fractionDigits $current]]]');
     }
 
     // callback
