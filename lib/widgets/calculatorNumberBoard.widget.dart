@@ -46,7 +46,7 @@ class _CalculatorNumberBoardWidgetState
   // if decimal enabled and fractionDigits reach out the limit
   bool get isFractionLimit =>
       current.contains('.') &&
-      current.split('.')[1].length <= widget.fractionDigits;
+      current.split('.')[1].length >= widget.fractionDigits;
 
   // ADD Integer to number of calculator
   void addInteger(int value) {
