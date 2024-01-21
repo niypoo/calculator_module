@@ -44,13 +44,18 @@ class _CalculatorNumberBoardWidgetState
     // max length is reached
     if (widget.maxLength <= current.length) return;
 
+    // if decimal enabled and last number is 0 , remove it to avoid fractionDigits
+    // last number added
+    if (current.contains('.') && current.substring(current.length - 1) == '0') {
+      current = current.substring(0, current.length - 1);
+    }
+
     // add new number to full number
     current = '$current$value';
-    print('[[[current $current]]]');
+
     // fraction apply if decimale is enabled
     if (current.contains('.')) {
       current = num.parse(current).toStringAsFixed(widget.fractionDigits);
-      print('[[[fractionDigits $current]]]');
     }
 
     // callback
