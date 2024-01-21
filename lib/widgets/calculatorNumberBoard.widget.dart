@@ -34,20 +34,6 @@ class _CalculatorNumberBoardWidgetState
   // decimale
   bool enableDecimale = false;
 
-  @override
-  void initState() {
-    current = widget.initValue.toString();
-    print('initState ++ ');
-    super.initState();
-  }
-
-  @override
-  void didChangeDependencies() {
-    current = widget.initValue.toString();
-    print('didChangeDependencies ++ ');
-    super.didChangeDependencies();
-  }
-
   // max length is reached
   bool get isMaxLimit => widget.maxLength <= current.length;
 
@@ -109,6 +95,10 @@ class _CalculatorNumberBoardWidgetState
 
   @override
   Widget build(BuildContext context) {
+    //test
+    current = widget.initValue.toString();
+    print('build $current ++');
+
     return LayoutBuilder(builder: (context, BoxConstraints constraints) {
       final maxHeight = ((constraints.maxHeight - 15) / 4);
       final maxWidth = (constraints.maxWidth - 30) / 4;
