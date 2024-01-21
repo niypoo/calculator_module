@@ -11,12 +11,10 @@ class CalculatorNumberBoardWidget extends StatefulWidget {
     required this.initValue,
     required this.onChange,
     required this.onSave,
-    this.fractionDigits = 2,
-    this.maxLength = 9,
+   this.maxLength = 9,
   });
 
   final num initValue;
-  final int fractionDigits;
   final int maxLength;
   final Function(num value) onChange;
   final Function onSave;
@@ -30,6 +28,7 @@ class _CalculatorNumberBoardWidgetState
     extends State<CalculatorNumberBoardWidget> {
   //current number of calculator
   String current = '0';
+
   // decimale
   bool enableDecimale = false;
 
@@ -44,19 +43,8 @@ class _CalculatorNumberBoardWidgetState
     // max length is reached
     if (widget.maxLength <= current.length) return;
 
-    // if decimal enabled and last number is 0 , remove it to avoid fractionDigits
-    // last number added
-    if (current.contains('.') && current.substring(current.length - 1) == '0') {
-      current = current.substring(0, current.length - 1);
-    }
-
     // add new number to full number
     current = '$current$value';
-
-    // fraction apply if decimale is enabled
-    if (current.contains('.')) {
-      current = num.parse(current).toStringAsFixed(widget.fractionDigits);
-    }
 
     // callback
     widget.onChange(num.parse(current));
