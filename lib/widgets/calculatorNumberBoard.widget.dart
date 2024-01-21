@@ -66,14 +66,11 @@ class _CalculatorNumberBoardWidgetState
   // Enable Decimal and add
   void onEnableDecimal() {
     setState(() {
-      enableDecimale = !enableDecimale;
+      enableDecimale = true;
     });
 
-    // if enabled
-    if (enableDecimale) {
-      // check if there . if not add .
-      if (!current.contains('.')) current = '$current.';
-    }
+    // check if there . if not add .
+    if (!current.contains('.')) current = '$current.';
   }
 
   // remove last chractor of calculator
