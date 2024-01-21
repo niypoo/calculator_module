@@ -37,7 +37,15 @@ class _CalculatorNumberBoardWidgetState
   @override
   void initState() {
     current = widget.initValue.toString();
+    print('initState ++ ');
     super.initState();
+  }
+
+  @override
+  void didChangeDependencies() {
+    current = widget.initValue.toString();
+    print('didChangeDependencies ++ ');
+    super.didChangeDependencies();
   }
 
   // max length is reached
