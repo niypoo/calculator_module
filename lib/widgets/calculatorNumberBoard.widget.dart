@@ -45,8 +45,10 @@ class _CalculatorNumberBoardWidgetState
 
   // if decimal enabled and fractionDigits reach out the limit
   bool get isFractionLimit =>
-      current.contains('.') &&
-      current.split('.')[1].length >= widget.fractionDigits;
+      isDecimalSymbloExist && current.split('.')[1].length >= widget.fractionDigits;
+
+  // if decimal enabled and fractionDigits reach out the limit
+  bool get isDecimalSymbloExist => current.contains('.');
 
   // ADD Integer to number of calculator
   void addInteger(int value) {
@@ -70,11 +72,18 @@ class _CalculatorNumberBoardWidgetState
     });
 
     // check if there . if not add .
-    if (!current.contains('.')) current = '$current.';
+    if (!isDecimalSymbloExist) current = '$current.';
   }
 
   // remove last chractor of calculator
   void remove() {
+    // disabled Decimal
+    if (enableDecimale && !isDecimalSymbloExist) {
+      setState(() {
+        enableDecimale = false;
+      });
+    }
+
     // skip
     if (current.isEmpty) return clear();
 
@@ -92,9 +101,6 @@ class _CalculatorNumberBoardWidgetState
 
   // clear whole number of calculator
   void clear() {
-    setState(() {
-      enableDecimale = false;
-    });
     current = '0';
     widget.onChange(num.parse(current));
   }
