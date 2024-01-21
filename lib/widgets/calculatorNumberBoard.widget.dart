@@ -37,13 +37,11 @@ class _CalculatorNumberBoardWidgetState
   }
 
   void onCalculatorChange(String value) {
-    print('[[[[current $current]]]]');
     // add new number to full number
     current = '$current$value';
 
     // callback
     widget.onChange(num.parse(current));
-    print('[[[[fractionDigits ${num.parse(current)}]]]]');
     VibrationHelper.haptic();
   }
 
@@ -60,7 +58,7 @@ class _CalculatorNumberBoardWidgetState
   }
 
   void onRemoveTap() {
-    print('[[[[current $current]]]]');
+
     if (current.isEmpty) return onClearTap();
 
     current = current.substring(0, current.length - 1);
@@ -70,7 +68,6 @@ class _CalculatorNumberBoardWidgetState
       current = current.substring(0, current.length - 1);
     }
 
-    print('[[[[substring $current]]]]');
     // callback
     widget.onChange(num.parse(current.isEmpty ? '0' : current));
   }
