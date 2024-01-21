@@ -190,7 +190,6 @@ class _CalculatorNumberBoardWidgetState
               ],
             ),
           ),
-          SizedBox(width: 3.sp),
           Column(
             children: [
               CalculatorButtonWidget(
