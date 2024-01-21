@@ -4,7 +4,6 @@ import 'package:flutter/widgets.dart';
 import 'package:fly_ui/extensions/responsive.extension.dart';
 import 'package:get/get.dart';
 import 'package:unicons/unicons.dart';
-import 'package:vibration_helper/vibration.helper.dart';
 
 class CalculatorNumberBoardWidget extends StatefulWidget {
   const CalculatorNumberBoardWidget({
@@ -13,10 +12,12 @@ class CalculatorNumberBoardWidget extends StatefulWidget {
     required this.onChange,
     required this.onSave,
     this.fractionDigits = 2,
+    this.maxLength = 11,
   });
 
   final num initValue;
   final int fractionDigits;
+  final int maxLength;
   final Function(num value) onChange;
   final Function onSave;
 
@@ -27,8 +28,10 @@ class CalculatorNumberBoardWidget extends StatefulWidget {
 
 class _CalculatorNumberBoardWidgetState
     extends State<CalculatorNumberBoardWidget> {
+  //current number of calculator
   String current = '0';
-  bool enableDouble = false;
+  // decimale
+  bool enableDecimale = false;
 
   @override
   void initState() {
@@ -36,32 +39,40 @@ class _CalculatorNumberBoardWidgetState
     super.initState();
   }
 
-  void onCalculatorChange(String value) {
+  // ADD Integer to number of calculator
+  void addInteger(int value) {
+    // max length is reached
+    if (widget.maxLength <= current.length) return;
+
     // add new number to full number
     current = '$current$value';
 
+    // fraction apply
+    current = num.parse(current).toStringAsFixed(widget.fractionDigits);
+
     // callback
     widget.onChange(num.parse(current));
-    VibrationHelper.haptic();
   }
 
-  void onDoubleEnableTap() {
+  // Enable Decimal and add
+  void onEnableDecimal() {
     setState(() {
-      enableDouble = !enableDouble;
-      if (enableDouble) {
-        if (!current.contains('.')) current = '$current.';
-      } else {
-        current = current.replaceFirst('.', '');
-      }
+      enableDecimale = !enableDecimale;
     });
-    VibrationHelper.haptic();
+
+    // if enabled
+    if (enableDecimale) {
+      // check if there . if not add .
+      if (!current.contains('.')) current = '$current.';
+    }
   }
 
-  void onRemoveTap() {
+  // remove last chractor of calculator
+  void remove() {
     // skip
-    if (current.isEmpty) return onClearTap();
+    if (current.isEmpty) return clear();
 
-    // remove
+    // remove last chracter
     current = current.substring(0, current.length - 1);
 
     // in case last dicmal has remove @ remove . also
@@ -73,8 +84,11 @@ class _CalculatorNumberBoardWidgetState
     widget.onChange(num.parse(current.isEmpty ? '0' : current));
   }
 
-  void onClearTap() {
-    enableDouble = false;
+  // clear whole number of calculator
+  void clear() {
+    setState(() {
+      enableDecimale = false;
+    });
     current = '0';
     widget.onChange(num.parse(current));
   }
@@ -94,70 +108,70 @@ class _CalculatorNumberBoardWidgetState
               children: [
                 CalculatorButtonWidget(
                   value: '9',
-                  onPressed: () => onCalculatorChange('9'),
+                  onPressed: () => addInteger(9),
                   height: maxHeight,
                   width: maxWidth,
                 ),
                 CalculatorButtonWidget(
                   value: '8',
-                  onPressed: () => onCalculatorChange('8'),
+                  onPressed: () => addInteger(8),
                   height: maxHeight,
                   width: maxWidth,
                 ),
                 CalculatorButtonWidget(
                   value: '7',
-                  onPressed: () => onCalculatorChange('7'),
+                  onPressed: () => addInteger(7),
                   height: maxHeight,
                   width: maxWidth,
                 ),
                 CalculatorButtonWidget(
                   value: '6',
-                  onPressed: () => onCalculatorChange('6'),
+                  onPressed: () => addInteger(6),
                   height: maxHeight,
                   width: maxWidth,
                 ),
                 CalculatorButtonWidget(
                   value: '5',
-                  onPressed: () => onCalculatorChange('5'),
+                  onPressed: () => addInteger(5),
                   height: maxHeight,
                   width: maxWidth,
                 ),
                 CalculatorButtonWidget(
                   value: '4',
-                  onPressed: () => onCalculatorChange('4'),
+                  onPressed: () => addInteger(4),
                   height: maxHeight,
                   width: maxWidth,
                 ),
                 CalculatorButtonWidget(
                   value: '3',
-                  onPressed: () => onCalculatorChange('3'),
+                  onPressed: () => addInteger(3),
                   height: maxHeight,
                   width: maxWidth,
                 ),
                 CalculatorButtonWidget(
                   value: '2',
-                  onPressed: () => onCalculatorChange('2'),
+                  onPressed: () => addInteger(2),
                   height: maxHeight,
                   width: maxWidth,
                 ),
                 CalculatorButtonWidget(
                   value: '1',
-                  onPressed: () => onCalculatorChange('1'),
+                  onPressed: () => addInteger(1),
                   height: maxHeight,
                   width: maxWidth,
                 ),
                 CalculatorButtonWidget(
                   backgroundColor:
-                      enableDouble ? Get.theme.colorScheme.secondary : null,
-                  color: enableDouble ? Get.theme.secondaryHeaderColor : null,
+                      enableDecimale ? Get.theme.colorScheme.secondary : null,
+                  color: enableDecimale ? Get.theme.secondaryHeaderColor : null,
                   value: '.',
-                  onPressed: onDoubleEnableTap,
+                  onPressed: onEnableDecimal,
                   height: maxHeight,
                   width: maxWidth,
                 ),
                 CalculatorButtonWidget(
                   value: '0',
-                  onPressed: () => onCalculatorChange('0'),
+                  onPressed: () => addInteger(0),
                   height: maxHeight,
                   width: (maxWidth + 5) * 2,
                 ),
@@ -169,14 +183,14 @@ class _CalculatorNumberBoardWidgetState
             children: [
               CalculatorButtonWidget(
                 value: UniconsLine.cancel,
-                onPressed: onRemoveTap,
+                onPressed: remove,
                 height: maxHeight,
                 width: maxWidth,
               ),
               SizedBox(height: 5.sp),
               CalculatorButtonWidget(
                 value: 'C',
-                onPressed: onClearTap,
+                onPressed: clear,
                 height: maxHeight,
                 width: maxWidth,
                 backgroundColor: Colors.red[400],
