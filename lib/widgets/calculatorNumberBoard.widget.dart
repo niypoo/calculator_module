@@ -58,15 +58,16 @@ class _CalculatorNumberBoardWidgetState
   }
 
   void onRemoveTap() {
-
+    // skip
     if (current.isEmpty) return onClearTap();
-
-    current = current.substring(0, current.length - 1);
 
     // in case last dicmal has remove @ remove . also
     if (current.substring(current.length - 1) == '.') {
       current = current.substring(0, current.length - 1);
     }
+
+    // remove
+    current = current.substring(0, current.length - 1);
 
     // callback
     widget.onChange(num.parse(current.isEmpty ? '0' : current));
