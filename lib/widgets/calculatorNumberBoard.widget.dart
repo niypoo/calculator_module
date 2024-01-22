@@ -89,11 +89,6 @@ class _CalculatorNumberBoardWidgetState
     // skip
     if (current.isEmpty) return clear();
 
-    // in case last dicmal has remove @ remove . also
-    if (current.isNotEmpty && current.substring(current.length - 1) == '.') {
-      current = current.substring(0, current.length - 1);
-    }
-
     // remove last chracter
     current = current.substring(0, current.length - 1);
 
