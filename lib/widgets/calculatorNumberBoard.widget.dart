@@ -74,9 +74,11 @@ class _CalculatorNumberBoardWidgetState
 
   // Enable Decimal and add
   void onEnableDecimal() {
-    setState(() {
-      enableDecimale = true;
-    });
+    setState(
+      () {
+        enableDecimale = true;
+      },
+    );
 
     // check if there . if not add .
     if (!isDecimalSymbloExist) current = '$current.';
@@ -86,6 +88,11 @@ class _CalculatorNumberBoardWidgetState
   void remove() {
     // skip
     if (current.isEmpty) return clear();
+
+    // in case last dicmal has remove @ remove . also
+    if (current.isNotEmpty && current.substring(current.length - 1) == '.') {
+      current = current.substring(0, current.length - 1);
+    }
 
     // remove last chracter
     current = current.substring(0, current.length - 1);
