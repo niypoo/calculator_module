@@ -39,6 +39,7 @@ class _CalculatorNumberBoardWidgetState
   @override
   void initState() {
     current = widget.initValue.toString();
+    print('current ${current}');
     super.initState();
   }
 
@@ -64,9 +65,11 @@ class _CalculatorNumberBoardWidgetState
 
     // if decimal enabled and fractionDigits reach out the limit
     if (isFractionLimit) return;
+     print('addInteger before ${current}');
 
     // add new number to full number
     current = '$current$value';
+ print('addInteger after ${current}');
 
     // callback
     widget.onChange(num.parse(current));
