@@ -13,6 +13,7 @@ class CalculatorNumberBoardWidget extends StatefulWidget {
     required this.onSave,
     this.fractionDigits = 2,
     this.maxLength = 9,
+    this.decimalsAllowed = const [1, 2, 3, 4, 5, 6, 7, 8, 9, 0],
   });
 
   final num initValue;
@@ -20,6 +21,7 @@ class CalculatorNumberBoardWidget extends StatefulWidget {
   final int maxLength;
   final Function(num value) onChange;
   final Function onSave;
+  final List<int> decimalsAllowed;
 
   @override
   State<CalculatorNumberBoardWidget> createState() =>
@@ -50,6 +52,10 @@ class _CalculatorNumberBoardWidgetState
 
   // if decimal enabled and fractionDigits reach out the limit
   bool get isDecimalSymbloExist => current.contains('.');
+
+  // check if decimal number is allowed in board
+  bool isDecimalNumberAllowed(int number) =>
+      !enableDecimale || widget.decimalsAllowed.contains(number);
 
   // ADD Integer to number of calculator
   void addInteger(int value) {
@@ -102,6 +108,9 @@ class _CalculatorNumberBoardWidgetState
 
   // clear whole number of calculator
   void clear() {
+    setState(() {
+      enableDecimale = false;
+    });
     current = '0';
     widget.onChange(num.parse(current));
   }
@@ -124,59 +133,68 @@ class _CalculatorNumberBoardWidgetState
                   onPressed: () => addInteger(9),
                   height: maxHeight,
                   width: maxWidth,
+                  disabled: isDecimalNumberAllowed(9),
                 ),
                 CalculatorButtonWidget(
                   value: '8',
                   onPressed: () => addInteger(8),
                   height: maxHeight,
                   width: maxWidth,
+                  disabled: isDecimalNumberAllowed(8),
                 ),
                 CalculatorButtonWidget(
                   value: '7',
                   onPressed: () => addInteger(7),
                   height: maxHeight,
                   width: maxWidth,
+                  disabled: isDecimalNumberAllowed(7),
                 ),
                 CalculatorButtonWidget(
                   value: '6',
                   onPressed: () => addInteger(6),
                   height: maxHeight,
                   width: maxWidth,
+                  disabled: isDecimalNumberAllowed(6),
                 ),
                 CalculatorButtonWidget(
                   value: '5',
                   onPressed: () => addInteger(5),
                   height: maxHeight,
                   width: maxWidth,
+                  disabled: isDecimalNumberAllowed(5),
                 ),
                 CalculatorButtonWidget(
                   value: '4',
                   onPressed: () => addInteger(4),
                   height: maxHeight,
                   width: maxWidth,
+                  disabled: isDecimalNumberAllowed(4),
                 ),
                 CalculatorButtonWidget(
                   value: '3',
                   onPressed: () => addInteger(3),
                   height: maxHeight,
                   width: maxWidth,
+                  disabled: isDecimalNumberAllowed(3),
                 ),
                 CalculatorButtonWidget(
                   value: '2',
                   onPressed: () => addInteger(2),
                   height: maxHeight,
                   width: maxWidth,
+                  disabled: isDecimalNumberAllowed(2),
                 ),
                 CalculatorButtonWidget(
                   value: '1',
                   onPressed: () => addInteger(1),
                   height: maxHeight,
                   width: maxWidth,
+                  disabled: isDecimalNumberAllowed(1),
                 ),
                 CalculatorButtonWidget(
                   backgroundColor:
                       enableDecimale ? Get.theme.colorScheme.secondary : null,
-                  color: enableDecimale ? Get.theme.secondaryHeaderColor : null,
+                  // color: enableDecimale ? null : Get.theme.secondaryHeaderColor,
                   value: '.',
                   onPressed: onEnableDecimal,
                   height: maxHeight,
@@ -187,11 +205,14 @@ class _CalculatorNumberBoardWidgetState
                   onPressed: () => addInteger(0),
                   height: maxHeight,
                   width: (maxWidth + 5) * 2,
+                  disabled: isDecimalNumberAllowed(0),
                 ),
               ],
             ),
           ),
           Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               CalculatorButtonWidget(
                 value: UniconsLine.cancel,

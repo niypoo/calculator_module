@@ -14,6 +14,7 @@ class CalculatorButtonWidget extends StatelessWidget {
     required this.width,
     this.color,
     this.backgroundColor,
+    this.disabled = false,
   });
 
   final dynamic value;
@@ -22,32 +23,36 @@ class CalculatorButtonWidget extends StatelessWidget {
   final double width;
   final Color? backgroundColor;
   final Color? color;
+  final bool disabled;
 
   @override
   Widget build(BuildContext context) {
     return FlyInkWell(
-      onTap: onPressed,
-      child: SizedBox(
-        width: width,
-        height: height,
-        child: FlyContainer(
-          color: backgroundColor,
-          child: Center(
-            child: value is String
-                ? AutoSizeText(
-                    value,
-                    style: Get.textTheme.headlineLarge!.copyWith(
+      onTap: disabled ? null : onPressed,
+      child: Opacity(
+        opacity: disabled ? 0.5 : 1,
+        child: SizedBox(
+          width: width,
+          height: height,
+          child: FlyContainer(
+            color: backgroundColor,
+            child: Center(
+              child: value is String
+                  ? AutoSizeText(
+                      value,
+                      style: Get.textTheme.headlineLarge!.copyWith(
+                        color: color,
+                        fontSize: 20.sp,
+                      ),
+                      maxLines: 1,
+                      textAlign: TextAlign.center,
+                    )
+                  : Icon(
+                      value,
                       color: color,
-                      fontSize: 20.sp,
+                      size: 20.sp,
                     ),
-                    maxLines: 1,
-                    textAlign: TextAlign.center,
-                  )
-                : Icon(
-                    value,
-                    color: color,
-                    size: 20.sp,
-                  ),
+            ),
           ),
         ),
       ),
