@@ -211,8 +211,6 @@ class _CalculatorNumberBoardWidgetState
             ),
           ),
           Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               CalculatorButtonWidget(
                 value: UniconsLine.cancel,
