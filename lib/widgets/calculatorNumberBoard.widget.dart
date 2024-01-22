@@ -38,8 +38,9 @@ class _CalculatorNumberBoardWidgetState
 
   @override
   void initState() {
+    print('runtimeType ${widget.initValue.runtimeType}');
+    print('current ${widget.initValue}');
     current = widget.initValue.toString();
-    print('current ${current}');
     super.initState();
   }
 
