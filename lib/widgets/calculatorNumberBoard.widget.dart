@@ -55,7 +55,7 @@ class _CalculatorNumberBoardWidgetState
 
   // check if decimal number is allowed in board
   bool isDecimalNumberAllowed(int number) =>
-      !enableDecimale || widget.decimalsAllowed.contains(number);
+      enableDecimale && !widget.decimalsAllowed.contains(number);
 
   // ADD Integer to number of calculator
   void addInteger(int value) {
