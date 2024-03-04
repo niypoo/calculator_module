@@ -232,7 +232,7 @@ class _CalculatorNumberBoardWidgetState
               ),
               SizedBox(height: 5.sp),
               CalculatorButtonWidget(
-                backgroundColor: Get.theme.primaryColor,
+                backgroundColor: Get.theme.colorScheme.secondary,
                 color: Get.theme.secondaryHeaderColor,
                 value: UniconsLine.check,
                 onPressed: widget.onSave,
