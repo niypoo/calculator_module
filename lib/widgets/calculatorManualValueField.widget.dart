@@ -48,7 +48,6 @@ class CalculatorManualValueFieldWidget extends StatelessWidget {
           FlyElevatedButton.primary(
             title: 'Confirm'.tr,
             onPressed: onConfirm,
-            margin: EdgeInsets.only(bottom: AppConfigService.to.space!.s),
           ),
           FlyTextButton(
             title: 'Cancel'.tr,
