@@ -221,7 +221,7 @@ class _CalculatorNumberBoardWidgetState
                 height: maxHeight,
                 width: maxWidth,
               ),
-              SizedBox(height: 1.sp),
+              SizedBox(height: 2.sp),
               CalculatorButtonWidget(
                 value: 'C',
                 onPressed: clear,
@@ -230,7 +230,7 @@ class _CalculatorNumberBoardWidgetState
                 backgroundColor: Colors.red[400],
                 color: Get.theme.secondaryHeaderColor,
               ),
-              SizedBox(height: 1.sp),
+              SizedBox(height: 2.sp),
               CalculatorButtonWidget(
                 backgroundColor: Get.theme.colorScheme.secondary,
                 color: Get.theme.secondaryHeaderColor,
