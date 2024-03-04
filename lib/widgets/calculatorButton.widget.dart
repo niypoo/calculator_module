@@ -42,7 +42,7 @@ class CalculatorButtonWidget extends StatelessWidget {
                       value,
                       style: Get.textTheme.headlineLarge!.copyWith(
                         color: color,
-                        fontSize: 20.sp,
+                        fontSize: 25.sp,
                       ),
                       maxLines: 1,
                       textAlign: TextAlign.center,
@@ -50,7 +50,7 @@ class CalculatorButtonWidget extends StatelessWidget {
                   : Icon(
                       value,
                       color: color,
-                      size: 20.sp,
+                      size: 25.sp,
                     ),
             ),
           ),

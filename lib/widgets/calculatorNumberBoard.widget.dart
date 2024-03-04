@@ -127,8 +127,8 @@ class _CalculatorNumberBoardWidgetState
         children: [
           Expanded(
             child: Wrap(
-              runSpacing: 2.sp,
-              spacing: 2.sp,
+              runSpacing: 1.sp,
+              spacing: 1.sp,
               children: [
                 CalculatorButtonWidget(
                   value: '9',
@@ -207,7 +207,7 @@ class _CalculatorNumberBoardWidgetState
                   value: '0',
                   onPressed: () => addInteger(0),
                   height: maxHeight,
-                  width: (maxWidth + 5) * 2,
+                  width: (maxWidth + 1.sp) * 2,
                   disabled: isDecimalNumberAllowed(0),
                 ),
               ],
@@ -221,7 +221,7 @@ class _CalculatorNumberBoardWidgetState
                 height: maxHeight,
                 width: maxWidth,
               ),
-              SizedBox(height: 5.sp),
+              SizedBox(height: 1.sp),
               CalculatorButtonWidget(
                 value: 'C',
                 onPressed: clear,
@@ -230,7 +230,7 @@ class _CalculatorNumberBoardWidgetState
                 backgroundColor: Colors.red[400],
                 color: Get.theme.secondaryHeaderColor,
               ),
-              SizedBox(height: 5.sp),
+              SizedBox(height: 1.sp),
               CalculatorButtonWidget(
                 backgroundColor: Get.theme.colorScheme.secondary,
                 color: Get.theme.secondaryHeaderColor,
