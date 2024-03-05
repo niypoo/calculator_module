@@ -120,8 +120,8 @@ class _CalculatorNumberBoardWidgetState
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, BoxConstraints constraints) {
-      final maxHeight = ((constraints.maxHeight - 2.sp) / 4);
-      final maxWidth = (constraints.maxWidth - 2.sp) / 4;
+      final maxHeight = ((constraints.maxHeight - 4.sp) / 4);
+      final maxWidth = (constraints.maxWidth - 0.sp) / 4;
 
       return Row(
         children: [
