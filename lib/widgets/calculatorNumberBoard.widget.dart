@@ -127,6 +127,8 @@ class _CalculatorNumberBoardWidgetState
         children: [
           Expanded(
             child: Wrap(
+              alignment: WrapAlignment.start,
+              runAlignment: WrapAlignment.start,
               runSpacing: 1.sp,
               spacing: 1.sp,
               children: [
