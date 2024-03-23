@@ -21,7 +21,7 @@ class CalculatorInformationScreenWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FlyContainer(
-      margin: EdgeInsets.symmetric(vertical: 2.sp),
+      margin: EdgeInsets.only(bottom: 5.sp),
       child: SizedBox(
         height: Get.height * 0.25,
         width: double.infinity,
