@@ -129,8 +129,8 @@ class _CalculatorNumberBoardWidgetState
             child: Wrap(
               alignment: WrapAlignment.start,
               runAlignment: WrapAlignment.start,
-              runSpacing: 3.sp,
-              spacing: 3.sp,
+              runSpacing: 1.sp,
+              spacing: 1.sp,
               children: [
                 CalculatorButtonWidget(
                   value: '9',
